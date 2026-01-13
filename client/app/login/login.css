@@ -1,0 +1,645 @@
+/* ========================================
+   IMPORTS DE FUENTES PROFESIONALES
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap');
+
+/* ========================================
+   VARIABLES CORPORATIVAS SERIAS
+   ======================================== */
+
+:root {
+  /* Paleta monocromática seria */
+  --primary: #18181b;
+  /* Negro zinc profundo */
+  --primary-hover: #09090b;
+  --accent: #27272a;
+  /* Zinc oscuro */
+
+  /* Grises corporativos */
+  --gray-50: #fafafa;
+  --gray-100: #f4f4f5;
+  --gray-200: #e4e4e7;
+  --gray-300: #d4d4d8;
+  --gray-400: #a1a1aa;
+  --gray-500: #71717a;
+  --gray-600: #52525b;
+  --gray-700: #3f3f46;
+  --gray-800: #27272a;
+  --gray-900: #18181b;
+
+  /* Textos */
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --text-muted: #71717a;
+
+  /* Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+
+  /* Efectos glass elegantes */
+  --glass-light: rgba(255, 255, 255, 0.75);
+  --glass-dark: rgba(0, 0, 0, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.4);
+
+  /* Sombras sutiles */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+
+  /* Spacing */
+  --radius: 12px;
+  --radius-lg: 16px;
+
+  /* Timing */
+  --transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   CONTAINER CON IMAGEN VISIBLE
+   ======================================== */
+
+.auth-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #09090b;
+}
+
+/* Fondo con overlay MUY sutil para ver la imagen */
+.auth-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.background-image {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.85) saturate(0.9);
+  /* Imagen visible pero profesional */
+}
+
+/* Overlay MUCHO más transparente */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      /* Mucho más transparente */
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.45) 100%);
+  backdrop-filter: blur(1px);
+  /* Blur mínimo */
+}
+
+/* ========================================
+   CONTENT GRID
+   ======================================== */
+
+.auth-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  padding: 48px;
+  gap: 48px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   PANEL IZQUIERDO - GLASSMORPHISM SERIO
+   ======================================== */
+
+.glass-card-3d {
+  background: var(--glass-dark);
+  backdrop-filter: blur(20px) saturate(100%);
+  -webkit-backdrop-filter: blur(20px) saturate(100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    var(--shadow-xl),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 56px 48px;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.brand-content {
+  color: white;
+}
+
+/* Logo serio */
+.brand-header {
+  margin-bottom: 56px;
+}
+
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.logo-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--gray-900);
+}
+
+.brand-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  color: white;
+}
+
+.brand-tagline {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Features minimalistas */
+.features-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 48px;
+}
+
+.feature {
+  display: flex;
+  gap: 14px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s var(--transition);
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.feature:nth-child(1) {
+  animation-delay: 0.4s;
+}
+
+.feature:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.feature:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.feature:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.feature-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.feature-content {
+  flex: 1;
+}
+
+.feature-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  color: white;
+  letter-spacing: -0.01em;
+}
+
+.feature-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* Stats serios */
+.glass-stats {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out 0.7s forwards;
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+}
+
+.stat-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ========================================
+   PANEL DERECHO - FORMULARIO BLANCO
+   ======================================== */
+
+.auth-form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass-form-3d {
+  width: 100%;
+  max-width: 460px;
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
+  padding: 44px 40px;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.3s forwards;
+}
+
+/* Tabs minimalistas */
+.auth-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 3px;
+  background: var(--gray-100);
+  border-radius: 10px;
+  margin-bottom: 32px;
+}
+
+.tab {
+  flex: 1;
+  padding: 9px 18px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s var(--transition);
+  letter-spacing: -0.01em;
+}
+
+.tab.active {
+  background: white;
+  color: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tab:hover:not(.active) {
+  color: var(--text-primary);
+}
+
+/* Form header */
+.form-header {
+  margin-bottom: 28px;
+}
+
+.form-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* Error alert */
+.glass-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+  border-radius: 8px;
+  color: #dc2626;
+  font-size: 13px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* Form */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Inputs serios */
+.glass-input {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+  z-index: 1;
+  transition: color 0.2s var(--transition);
+}
+
+.field-input {
+  width: 100%;
+  padding: 12px 14px 12px 44px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  background: white;
+  border: 1.5px solid var(--gray-300);
+  border-radius: 9px;
+  transition: all 0.2s var(--transition);
+  outline: none;
+  font-weight: 400;
+}
+
+.field-input:hover {
+  border-color: var(--gray-400);
+}
+
+.field-input:focus {
+  border-color: var(--gray-900);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.field-input:focus~.input-icon {
+  color: var(--gray-900);
+}
+
+.field-input::placeholder {
+  color: var(--gray-400);
+  font-weight: 400;
+}
+
+/* Botón serio y minimalista */
+.button-3d {
+  margin-top: 8px;
+  padding: 12px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s var(--transition);
+  letter-spacing: -0.01em;
+}
+
+.button-3d:hover:not(:disabled) {
+  background: var(--primary-hover);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.button-3d:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.button-3d:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner-icon {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.arrow-icon {
+  transition: transform 0.2s var(--transition);
+}
+
+.button-3d:hover:not(:disabled) .arrow-icon {
+  transform: translateX(2px);
+}
+
+/* Footer */
+.form-footer {
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-200);
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.footer-link {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+  transition: opacity 0.2s var(--transition);
+}
+
+.footer-link:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1200px) {
+  .auth-content {
+    grid-template-columns: 0.9fr 1fr;
+    padding: 40px;
+    gap: 40px;
+  }
+
+  .glass-card-3d {
+    padding: 48px 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .auth-content {
+    grid-template-columns: 1fr;
+    padding: 32px;
+    gap: 32px;
+  }
+
+  .glass-card-3d {
+    padding: 40px 36px;
+  }
+
+  .glass-form-3d {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-content {
+    padding: 24px;
+  }
+
+  .glass-card-3d {
+    display: none;
+  }
+
+  .glass-form-3d {
+    padding: 36px 32px;
+  }
+
+  .form-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-content {
+    padding: 16px;
+  }
+
+  .glass-form-3d {
+    padding: 32px 24px;
+    border-radius: var(--radius);
+  }
+
+  .form-title {
+    font-size: 22px;
+  }
+
+  .button-3d {
+    padding: 11px 20px;
+    font-size: 14px;
+  }
+}
+
+/* ========================================
+   OPTIMIZACIONES
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
