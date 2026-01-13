@@ -184,7 +184,7 @@ Users (1) ──────< (N) Reservations (N) >────── (1) Rooms
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/coworking-saas.git
+git clone https://github.com/MiguelCs03/coworking-saas-nest-next
 cd coworking-saas
 ```
 
@@ -278,100 +278,71 @@ Password: Admin123!
 ### Authentication Endpoints
 
 #### Register User
-```http
-POST /auth/register
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "SecurePassword123",
-  "role": "client"
-}
-```
+- **POST** `/auth/register`
+- Creates a new user account with name, email, password, and role
+- Returns access token and user information
 
 #### Login
-```http
-POST /auth/login
-Content-Type: application/json
-
-{
-  "email": "john@example.com",
-  "password": "SecurePassword123"
-}
-
-Response:
-{
-  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "user": {
-    "id": "uuid",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "role": "client"
-  }
-}
-```
+- **POST** `/auth/login`
+- Authenticates user with email and password
+- Returns JWT access token and user profile
 
 #### Get Profile (Protected)
-```http
-GET /auth/profile
-Authorization: Bearer {access_token}
-```
+- **GET** `/auth/profile`
+- Requires authentication token
+- Returns current user's profile information
 
 ### Rooms Endpoints
 
 #### Get All Available Rooms
-```http
-GET /rooms/available
-```
+- **GET** `/rooms/available`
+- Returns list of all active coworking spaces
 
 #### Get Room by ID
-```http
-GET /rooms/:id
-```
+- **GET** `/rooms/:id`
+- Returns detailed information about a specific room
 
 #### Create Room (Admin Only)
-```http
-POST /rooms
-Authorization: Bearer {admin_token}
-Content-Type: application/json
+- **POST** `/rooms`
+- Requires admin authentication
+- Creates a new workspace with name, description, capacity, price, and image
 
-{
-  "name": "Innovation Suite",
-  "description": "Modern workspace with natural light",
-  "capacity": 10,
-  "price_per_hour": 50,
-  "is_active": true,
-  "image_url": "https://example.com/image.jpg"
-}
-```
+#### Update Room (Admin Only)
+- **PATCH** `/rooms/:id`
+- Requires admin authentication
+- Updates room information
+
+#### Delete Room (Admin Only)
+- **DELETE** `/rooms/:id`
+- Requires admin authentication
+- Removes a room from the system
 
 ### Reservations Endpoints
 
 #### Create Reservation
-```http
-POST /reservations
-Authorization: Bearer {access_token}
-Content-Type: application/json
-
-{
-  "room_id": "uuid",
-  "start_time": "2026-01-15T09:00:00Z",
-  "end_time": "2026-01-15T17:00:00Z"
-}
-```
+- **POST** `/reservations`
+- Requires authentication
+- Creates a new booking with room, start time, and end time
+- Automatically calculates total price
 
 #### Get User Reservations
-```http
-GET /reservations/user/:userId
-Authorization: Bearer {access_token}
-```
+- **GET** `/reservations/user/:userId`
+- Requires authentication
+- Returns all bookings for a specific user
+
+#### Get Room Reservations
+- **GET** `/reservations/room/:roomId`
+- Returns all reservations for a specific room
 
 #### Cancel Reservation
-```http
-PATCH /reservations/:id/cancel
-Authorization: Bearer {access_token}
-```
+- **PATCH** `/reservations/:id/cancel`
+- Requires authentication
+- Cancels an active booking
+
+#### Complete Reservation (Admin Only)
+- **PATCH** `/reservations/:id/complete`
+- Requires admin authentication
+- Marks a reservation as completed
 
 **Full API Documentation**: See [Postman Collection](./server/GUIA_POSTMAN.md)
 
