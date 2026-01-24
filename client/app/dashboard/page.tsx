@@ -103,22 +103,22 @@ export default function DashboardPage() {
 
                 {/* Sección de próximas características */}
                 <div className="features-section">
-                    <h3 className="section-title">Próximamente</h3>
+                    <h3 className="section-title">Funciones Disponibles</h3>
                     <div className="features-grid">
-                        <div className="feature-card">
+                        <div className="feature-card clickable" onClick={() => router.push('/home')}>
                             <span className="feature-emoji">🏢</span>
-                            <h4>Gestión de Salas</h4>
-                            <p>Administra las salas de coworking disponibles</p>
+                            <h4>Explorar Espacios</h4>
+                            <p>Descubre y reserva espacios de coworking</p>
                         </div>
-                        <div className="feature-card">
+                        <div className="feature-card clickable" onClick={() => router.push('/reservations')}>
                             <span className="feature-emoji">📅</span>
-                            <h4>Reservas</h4>
-                            <p>Crea y gestiona tus reservas</p>
+                            <h4>Mis Reservas</h4>
+                            <p>Gestiona tus reservas activas y pasadas</p>
                         </div>
                         <div className="feature-card">
                             <span className="feature-emoji">📊</span>
                             <h4>Reportes</h4>
-                            <p>Visualiza estadísticas y reportes</p>
+                            <p>Próximamente: Visualiza estadísticas</p>
                         </div>
                     </div>
                 </div>

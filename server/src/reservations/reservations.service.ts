@@ -40,6 +40,31 @@ export class ReservationsService {
         return !!conflictingReservation;
     }
 
+    // Verificar disponibilidad de una sala en un horario específico
+    async checkAvailability(
+        roomId: string,
+        startTime: Date,
+        endTime: Date,
+    ): Promise<{ available: boolean; message: string }> {
+        const hasConflict = await this.checkTimeConflict(
+            roomId,
+            startTime,
+            endTime,
+        );
+
+        if (hasConflict) {
+            return {
+                available: false,
+                message: 'La sala no está disponible en ese horario',
+            };
+        }
+
+        return {
+            available: true,
+            message: 'La sala está disponible',
+        };
+    }
+
     // Crear una nueva reserva
     async create(reservationData: Partial<Reservation>): Promise<Reservation> {
         const { room_id, start_time, end_time } = reservationData;

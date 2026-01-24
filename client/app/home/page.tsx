@@ -63,11 +63,7 @@ export default function HomePage() {
     };
 
     const handleReserve = (roomId: string) => {
-        if (isAuthenticated()) {
-            router.push(`/reservations/new?room=${roomId}`);
-        } else {
-            router.push('/login');
-        }
+        router.push(`/space/${roomId}`);
     };
 
     return (
@@ -96,8 +92,17 @@ export default function HomePage() {
                         <nav className="nav-links">
                             <a href="#spaces" className="nav-link">Espacios</a>
                             <a href="#how-it-works" className="nav-link">Cómo Funciona</a>
+                            {isAuthenticated() && (
+                                <button
+                                    onClick={() => router.push('/reservations')}
+                                    className="nav-link"
+                                    style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+                                >
+                                    Mis Reservas
+                                </button>
+                            )}
                             <button
-                                onClick={() => router.push('/login')}
+                                onClick={() => router.push(isAuthenticated() ? '/dashboard' : '/login')}
                                 className="btn-login"
                             >
                                 {isAuthenticated() ? 'Mi Cuenta' : 'Iniciar Sesión'}

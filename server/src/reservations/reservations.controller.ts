@@ -6,17 +6,32 @@ import {
     Patch,
     Param,
     Delete,
+    UsePipes,
+    ValidationPipe,
 } from '@nestjs/common';
 import { ReservationsService } from './reservations.service';
-import { Reservation } from './entities/reservation.entity';
+import { CreateReservationDto } from './dto/create-reservation.dto';
+import { UpdateReservationDto } from './dto/update-reservation.dto';
+import { CheckAvailabilityDto } from './dto/check-availability.dto';
 
 @Controller('reservations')
 export class ReservationsController {
     constructor(private readonly reservationsService: ReservationsService) { }
 
     @Post()
-    create(@Body() createReservationDto: Partial<Reservation>) {
+    @UsePipes(new ValidationPipe({ transform: true }))
+    create(@Body() createReservationDto: CreateReservationDto) {
         return this.reservationsService.create(createReservationDto);
+    }
+
+    @Post('check-availability')
+    @UsePipes(new ValidationPipe({ transform: true }))
+    checkAvailability(@Body() checkAvailabilityDto: CheckAvailabilityDto) {
+        return this.reservationsService.checkAvailability(
+            checkAvailabilityDto.room_id,
+            checkAvailabilityDto.start_time,
+            checkAvailabilityDto.end_time,
+        );
     }
 
     @Get()
@@ -40,9 +55,10 @@ export class ReservationsController {
     }
 
     @Patch(':id')
+    @UsePipes(new ValidationPipe({ transform: true }))
     update(
         @Param('id') id: string,
-        @Body() updateReservationDto: Partial<Reservation>,
+        @Body() updateReservationDto: UpdateReservationDto,
     ) {
         return this.reservationsService.update(id, updateReservationDto);
     }
