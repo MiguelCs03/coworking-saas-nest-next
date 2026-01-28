@@ -296,14 +296,14 @@ export default function HomePage() {
                                             <div className="space-header">
                                                 <h3 className="space-name">{room.name}</h3>
                                                 <div className="space-price">
-                                                    <span className="price-amount">${room.price_per_hour}</span>
+                                                    <span className="price-amount">Bs. {room.price_per_hour}</span>
                                                     <span className="price-unit">/hora</span>
                                                 </div>
                                             </div>
 
                                             <p className="space-location">
                                                 <MapPin size={16} />
-                                                Centro Ciudad
+                                                Santa Cruz de la Sierra
                                             </p>
 
                                             <p className="space-description-modern">

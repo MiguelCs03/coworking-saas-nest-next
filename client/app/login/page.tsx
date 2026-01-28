@@ -63,7 +63,9 @@ export default function LoginPage() {
             localStorage.setItem('token', data.access_token);
             localStorage.setItem('user', JSON.stringify(data.user));
 
-            router.push('/dashboard');
+            const params = new URLSearchParams(window.location.search);
+            const redirectUrl = params.get('redirect') || '/dashboard';
+            router.push(redirectUrl);
         } catch (err: any) {
             if (err.message.includes('fetch')) {
                 setError('No se puede conectar al servidor. Verifica que el backend esté corriendo.');

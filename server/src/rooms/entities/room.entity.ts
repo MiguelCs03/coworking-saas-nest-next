@@ -6,6 +6,7 @@ import {
     OneToMany,
 } from 'typeorm';
 import { Reservation } from '../../reservations/entities/reservation.entity';
+import { RoomMedia } from './room-media.entity';
 
 @Entity('rooms')
 export class Room {
@@ -36,4 +37,7 @@ export class Room {
     // Relación: Una sala puede tener muchas reservas
     @OneToMany(() => Reservation, (reservation) => reservation.room)
     reservations: Reservation[];
+
+    @OneToMany(() => RoomMedia, (media) => media.room, { cascade: true })
+    media: RoomMedia[];
 }

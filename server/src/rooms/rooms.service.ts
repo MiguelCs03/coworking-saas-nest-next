@@ -21,7 +21,7 @@ export class RoomsService {
         const where = onlyActive ? { is_active: true } : {};
         return await this.roomsRepository.find({
             where,
-            relations: ['reservations'],
+            relations: ['reservations', 'media'],
         });
     }
 
@@ -34,7 +34,7 @@ export class RoomsService {
     async findOne(id: string): Promise<Room | null> {
         return await this.roomsRepository.findOne({
             where: { id },
-            relations: ['reservations'],
+            relations: ['reservations', 'media'],
         });
     }
 

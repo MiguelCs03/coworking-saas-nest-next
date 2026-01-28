@@ -485,11 +485,9 @@ This software can be used for commercial purposes. For white-label or enterprise
 
 ## 👨‍💻 Author
 
-**Your Name**
-- Portfolio: [yourportfolio.com](https://yourportfolio.com)
-- LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
-- GitHub: [@yourusername](https://github.com/yourusername)
+**Miguel Angel Cesary Sorioco**
+- Email: mangelcs2003@gmail.com
+- GitHub: [@MiguelCs03](https://github.com/MiguelCs03)
 
 ---
 
