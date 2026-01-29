@@ -247,6 +247,31 @@ export default function HomePage() {
                     </div>
                 </section>
 
+                {/* Video Section */}
+                <section className="video-section-modern">
+                    <div className="section-container">
+                        <div className="video-container-modern">
+                            <div className="video-overlay-content">
+                                <h2 className="video-title">Vive la experiencia Coworking</h2>
+                                <p className="video-subtitle">Un recorrido por nuestros espacios diseñados para inspirar</p>
+                            </div>
+                            <video
+                                className="background-video"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                preload="auto"
+                                poster="/coworking-hero.jpg"
+                            >
+                                <source src="/videos/Video_de_publicidad_.mp4" type="video/mp4" />
+                                Tu navegador no soporta el tag de video.
+                            </video>
+                            <div className="video-overlay-gradient"></div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* Espacios Populares */}
                 <section className="popular-spaces-section" id="spaces">
                     <div className="section-container">
