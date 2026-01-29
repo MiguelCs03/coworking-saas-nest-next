@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/footer";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Coworking SaaS - Gestión Inteligente de Espacios",
@@ -25,6 +26,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body suppressHydrationWarning className="flex min-h-screen flex-col">
+        <Toaster position="top-right" richColors />
         <main className="flex-1">
           {children}
         </main>

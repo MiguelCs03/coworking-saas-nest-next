@@ -9,13 +9,14 @@ import {
 } from '@nestjs/common';
 import { RoomsService } from './rooms.service';
 import { Room } from './entities/room.entity';
+import { CreateRoomDto } from './dto/create-room.dto';
 
 @Controller('rooms')
 export class RoomsController {
     constructor(private readonly roomsService: RoomsService) { }
 
     @Post()
-    create(@Body() createRoomDto: Partial<Room>) {
+    create(@Body() createRoomDto: CreateRoomDto) {
         return this.roomsService.create(createRoomDto);
     }
 

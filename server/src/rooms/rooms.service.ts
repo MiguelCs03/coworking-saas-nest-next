@@ -2,17 +2,31 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Room } from './entities/room.entity';
+import { RoomMedia } from './entities/room-media.entity';
+import { CreateRoomDto } from './dto/create-room.dto';
 
 @Injectable()
 export class RoomsService {
     constructor(
         @InjectRepository(Room)
         private roomsRepository: Repository<Room>,
+        @InjectRepository(RoomMedia)
+        private roomMediaRepository: Repository<RoomMedia>,
     ) { }
 
     // Crear una nueva sala
-    async create(roomData: Partial<Room>): Promise<Room> {
+    async create(createRoomDto: CreateRoomDto): Promise<Room> {
+        const { media, ...roomData } = createRoomDto;
+
+        // Create the room entity
         const room = this.roomsRepository.create(roomData);
+
+        // If media is provided, create media entities
+        if (media && media.length > 0) {
+            room.media = media.map(m => this.roomMediaRepository.create(m));
+        }
+
+        // The cascade option in the entity will automatically save media
         return await this.roomsRepository.save(room);
     }
 
