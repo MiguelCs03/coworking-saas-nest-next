@@ -394,7 +394,7 @@ body {
 }
 
 .section-container {
-    max-width: 1600px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -532,7 +532,7 @@ body {
 /* Popular Spaces */
 
 .popular-spaces-section {
-    padding: 80px 24px;
+    padding: 80px 48px;
 }
 
 .section-header-split {
@@ -564,8 +564,10 @@ body {
 
 .spaces-grid-modern {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 32px;
+    justify-items: center;
+    width: 100%;
 }
 
 .space-card-modern {
@@ -574,6 +576,8 @@ body {
     overflow: hidden;
     border: 1px solid var(--gray-200);
     transition: all 0.3s var(--transition);
+    width: 100%;
+    max-width: 450px;
 }
 
 .space-card-modern:hover {
@@ -1054,5 +1058,18 @@ body {
 
     .cta-container-modern {
         padding: 60px 32px;
+    }
+}
+
+/* Large screens - ensure 3 columns */
+@media (min-width: 1200px) {
+    .spaces-grid-modern {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .space-card-modern {
+        max-width: none;
     }
 }
